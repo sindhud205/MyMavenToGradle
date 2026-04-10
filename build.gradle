@@ -1,27 +1,42 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'java'
+    id 'application'
+}
 
 group = 'com.example'
 version = '1.0-SNAPSHOT'
+description = 'MyMavenToGradle'
 
-description = """MyMavenToGradle"""
-
-sourceCompatibility = 11
-targetCompatibility = 11
-
-jar{
-	manifest{
-		attributes(
-			'Main-Class' :'com.example.App'
-		)
-	}
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
-
 
 repositories {
-        
-     maven { url "https://repo.maven.apache.org/maven2" }
+    mavenCentral()
 }
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version:'3.8.1'
+    // JUnit for testing
+    testImplementation 'junit:junit:4.13.2'
+
+    // Add your project dependencies here if needed
+    // Example for Selenium:
+    // implementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
+
+    // Optional logging dependency to avoid SLF4J warnings
+    // implementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+
+application {
+    // Your main class
+    mainClass = 'com.example.App'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.example.App'
+        )
+    }
 }
