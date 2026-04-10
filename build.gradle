@@ -1,7 +1,5 @@
-plugins {
-    id 'java'
-    id 'application'
-}
+apply plugin: 'java'
+apply plugin: 'application'
 
 group = 'com.example'
 version = '1.0-SNAPSHOT'
@@ -15,12 +13,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:3.8.1'
+    testCompile 'junit:junit:3.8.1'
 }
 
-application {
-    mainClassName = 'com.example.App' // Compatible with older Gradle versions
-}
+// Required for older Gradle versions
+mainClassName = 'com.example.App'
 
 jar {
     manifest {
