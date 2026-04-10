@@ -7,11 +7,8 @@ group = 'com.example'
 version = '1.0-SNAPSHOT'
 description = 'MyMavenToGradle'
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -22,13 +19,13 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.example.App'
+    mainClassName = 'com.example.App' // Compatible with older Gradle versions
 }
 
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.example.App'
+            'Main-Class': 'com.example.App'
         )
     }
 }
